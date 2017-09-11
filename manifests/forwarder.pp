@@ -196,12 +196,7 @@ class splunk::forwarder (
     ensure => file,
     tag    => 'splunk_forwarder',
   }
-
-  if splunk_user != 'root'{
-    service { $virtual_service:
-      ensure => stopped,
-    }
-  }
+  
   file { "${forwarder_confdir}/splunk-launch.conf":
     ensure  => file,
     tag     => 'splunk_forwarder',
