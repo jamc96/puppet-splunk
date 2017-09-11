@@ -197,6 +197,12 @@ class splunk::forwarder (
     tag    => 'splunk_forwarder',
   }
 
+  file { "${forwarder_confdir}/splunk-launch.conf":
+    ensure  => file,
+    tag     => 'splunk_forwarder',
+    content => template('splunk/forwarder/_launch.erb'),
+  }
+
   # Validate: if both Splunk and Splunk Universal Forwarder are installed on
   # the same system, then they must use different admin ports.
   if (defined(Class['splunk']) and defined(Class['splunk::forwarder'])) {
