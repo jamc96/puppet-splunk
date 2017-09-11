@@ -201,6 +201,7 @@ class splunk::forwarder (
     ensure  => file,
     tag     => 'splunk_forwarder',
     content => template('splunk/forwarder/_launch.erb'),
+    notify  => Service[$virtual_service],
   }
 
   # Validate: if both Splunk and Splunk Universal Forwarder are installed on
