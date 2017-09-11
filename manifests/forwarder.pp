@@ -197,12 +197,18 @@ class splunk::forwarder (
     tag    => 'splunk_forwarder',
   }
 
+  if splunk_user != 'root'{
+    service { $virtual_service:
+      ensure => stopped,
+    }
+  }
   file { "${forwarder_confdir}/splunk-launch.conf":
     ensure  => file,
     tag     => 'splunk_forwarder',
     content => template('splunk/forwarder/_launch.erb'),
     notify  => Service[$virtual_service],
   }
+
 
   # Validate: if both Splunk and Splunk Universal Forwarder are installed on
   # the same system, then they must use different admin ports.
