@@ -176,7 +176,7 @@ class splunk::params (
     'default_host' => {
       section      => 'default',
       setting      => 'host',
-      value        => $::clientcert,
+      value        => $::hostname,
       tag          => 'splunk_forwarder',
     },
   }
