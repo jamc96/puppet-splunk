@@ -171,12 +171,6 @@ class splunk::params (
       value               => "${server}:${logging_port}",
       tag                 => 'splunk_forwarder',
     },
-    'tcpout_default_server_group'  => {
-      section                      => "tcpout-server://${server}:${logging_port}",
-      setting                      => '',
-      value                        => '',
-      tag                          => 'splunk_forwarder',
-    },
   }
   $forwarder_input = {
     'default_host' => {
