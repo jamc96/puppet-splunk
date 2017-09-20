@@ -173,13 +173,15 @@ class splunk::forwarder (
   }
 
   file { "${forwarder_confdir}/system/local/inputs.conf":
-    ensure => present,
-    tag    => 'splunk_forwarder',
+    ensure  => file,
+    replace => true,
+    tag     => 'splunk_forwarder',
   }
 
   file { "${forwarder_confdir}/system/local/outputs.conf":
-    ensure => present,
-    tag    => 'splunk_forwarder',
+    ensure  => file,
+    replace => true,
+    tag     => 'splunk_forwarder',
   }
 
   file { "${forwarder_confdir}/system/local/web.conf":
