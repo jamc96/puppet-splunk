@@ -160,16 +160,22 @@ class splunk::params (
 
   $forwarder_output = {
     'tcpout_defaultgroup'          => {
-      section                      => 'default',
+      section                      => 'tcpout',
       setting                      => 'defaultGroup',
-      value                        => "${server}_${logging_port}",
+      value                        => 'default-autolb-group',
       tag                          => 'splunk_forwarder',
     },
     'defaultgroup_server' => {
-      section             => "tcpout:${server}_${logging_port}",
+      section             => 'tcpout:default-autolb-group',
       setting             => 'server',
       value               => "${server}:${logging_port}",
       tag                 => 'splunk_forwarder',
+    },
+    'tcpout_default_server_group'  => {
+      section                      => "tcpout-server://${server}:${logging_port}",
+      setting                      => '',
+      value                        => '',
+      tag                          => 'splunk_forwarder',
     },
   }
   $forwarder_input = {
